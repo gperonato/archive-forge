@@ -1,0 +1,27 @@
+    {  
+    "author-info": { 
+      "orchid":,   
+  },
+    "content": {
+            "title":       "Chemical compounds with NMR spectra",   
+            "item_max":      1,   
+            "item_min":      1,   
+            "mandatory":    true  
+            "items" : {
+              "title": "Chemical structure",
+              file-format : {".cdx", ".mol", "sdf"},
+              folder-accepted : false
+            },
+            {
+              "title": "NMR spectra"
+              file-format : {},
+              folder-accepted : true
+            }
+        },
+        "nmranalysis": {  
+            "title":       "Chemical compounds with NMR spectra",   
+            "item_max":      100,   
+            "item_min":      0,   
+            "mandatory":    true  
+        }  
+    }  
