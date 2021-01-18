@@ -1,6 +1,8 @@
 # archive-forger
 ORD hackathon challenge 5 https://github.com/ORD-Hackathon/hackathon-2021/issues/5
 
+<img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
+
 # Target user
 
 Scientific-domain specific forger
