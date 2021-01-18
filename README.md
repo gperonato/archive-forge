@@ -11,7 +11,7 @@ Input : ORCHID : write firstname lastname
 
 Scientific-domain specific forge
 
-Important to adapt the "archive forger" to different fiels/users
+Important to adapt the "archive forge" to different fields/users
 
 Example of user/modifyer of archive forger:
 
