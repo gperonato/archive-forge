@@ -4,9 +4,11 @@ ORD hackathon challenge 5 https://github.com/ORD-Hackathon/hackathon-2021/issues
 At top of the page:
 
 **Author of Archive**
+
 Input : ORCHID : write firstname lastname
 
 **Relate publication**
+
 Input : DOI : write list of authors (nice but not necessary... use datacite.org...)
 
 <img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
