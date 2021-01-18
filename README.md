@@ -1,6 +1,10 @@
 # archive-forge
 ORD hackathon challenge 5 https://github.com/ORD-Hackathon/hackathon-2021/issues/5
 
+At top:
+Author of Archive
+Input : ORCHID : write firstname lastname
+
 <img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
 
 # Target user
