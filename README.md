@@ -5,7 +5,7 @@ ORD hackathon challenge 5 https://github.com/ORD-Hackathon/hackathon-2021/issues
 
 Scientific-domain specific forger
 
-Important to adapt the "archive forger" to different filds/users
+Important to adapt the "archive forger" to different fiels/users
 
 Example of user/modifyer of archive forger:
 
