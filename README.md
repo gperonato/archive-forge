@@ -9,7 +9,7 @@ Input : ORCHID : write firstname lastname
 
 # Target user
 
-Scientific-domain specific forger
+Scientific-domain specific forge
 
 Important to adapt the "archive forger" to different fiels/users
 
