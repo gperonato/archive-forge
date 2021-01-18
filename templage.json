@@ -1,0 +1,47 @@
+{
+    "author-info": [
+      {"title": "ORCHID"  ,
+      "input-type": "String"  ,
+      "tip": "Enter your ORCHID, if you have one (it will autofill this entry)", 
+      "validator": "authororchid.js"  
+      },
+      {"title": "Name"  ,
+      "input-type": "String",
+      "tip": "Enter your name" , 
+      "validator": "authorname.js"
+      }
+      ],
+    "metadata": "schema.org/name"  
+  },
+  {"content": [{
+            "title":       "Chemical compounds with NMR spectra",   
+            "item_max":      0,   
+            "item_min":      10,   
+            "store-in-folder" : "chemicalCompounds"
+            "items" [{
+              "title": "Chemical structure",
+              "file-format" : [".cdx", ".mol", "sdf"],
+              "folder-accepted" : false,
+              "mandatory" : true,
+              "store-in-subfolder" : "structure",
+              "validator" : "NMRspectraValidator.js",
+              "area-size" : "100x50",
+              "image-empty" : "images/dropStructEmpty.svg",
+              "image-filled" : "images/dropStructFilled.svg"
+            },
+            {
+              "title": "NMR spectra"
+              "file-format" [],
+              "folder-accepted" : true,
+              "mandatory" : false,
+              "store-in-subfolder" : "NMRspectra",
+              "validator" : "NMRspectraValidator.js",
+              "area-size" : "100x50",
+              "image-empty" : "images/dropNMREmpty.svg",
+              "image-filled" : "images/dropNMRFilled.svg"
+            }
+            ]
+        }]
+    }
+}
+}
