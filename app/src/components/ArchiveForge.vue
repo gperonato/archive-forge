@@ -1,50 +1,41 @@
 <template>
   <div>
-    <section class="form">
-      <h2>Archive-Forge</h2>
+    <h2>Archive-Forge</h2>
 
+    <section class="form">
       <b-field label="Author of data generation">
-        <b-input placeholder="ORCID"></b-input>
-        <b-input placeholder="First name"></b-input>
-        <b-input placeholder="Last name"></b-input>
+        <b-input placeholder="ORCID" :v-model="author_orcid"></b-input>
+        <b-input placeholder="First name" :v-model="first_name"></b-input>
+        <b-input placeholder="Last name" :v-model="last_name"></b-input>
       </b-field>
 
       <b-field label="Related publication">
-        <b-input placeholder="DOI"></b-input>
+        <b-input placeholder="DOI" :v-model="pub_doi"></b-input>
       </b-field>
     </section>
-    <hr />
-    <section class="columns form">
-      <div class="column is-one-half">
-        <b-field label="Dataset name">
-          <b-input placeholder="code-123"></b-input>
-        </b-field>
-      </div>
-      <div class="column is-one-quarter">
-        <div class="preview box" style="display: inline-block">
-          Structure file
-          <br /><small>(CSV, JSON, STL)</small>
-        </div>
-      </div>
-      <div class="column is-one-quarter">
-        <div class="preview box" style="display: inline-block">
-          Data archive
-          <br /><small>(ZIP)</small>
-        </div>
-      </div>
-    </section>
 
-    <div class="field has-text-centered m-5">
-      <button class="button is-primary">+ Add dataset</button>
-      <button class="button is-success">Use the Forge!</button>
+    <div v-for="ds in dataset_items" :key="ds.ix" v-show="!isDownloading">
+      <section class="form mt-5">
+        <h3>{{ ds.ix+1 }}</h3>
+        <DatasetForm :name="ds.name" :identifier="ds.id" />
+      </section>
+    </div>
+
+    <div class="field has-text-centered m-5" v-show="!isDownloading">
+      <button class="button is-primary m-2" @click="addDataset">+ Add dataset</button>
+      <button class="button is-success m-2 fett" @click="useForge"><span>砧</span> Use the Forge!</button>
+      <a target="_blank" href="https://www.youtube.com/watch?v=S1qK_TA52e4">
+        <button class="button is-danger m-2">Upload to Zenodo</button>
+      </a>
     </div>
 
     <section class="confirm m-5" v-show="isDownloading">
       <h2>&#x1F389; Woo hoo!</h2>
       <p>Your FAIR data archive is ready:</p>
-      <a :href="downloadUrl" download>
+      <button class="button is-default m-2" @click="cancelForge">Go back</button>
+      <a href="#" download>
         <button class="button is-success is-large">
-          &blacktriangledown; Download PDF
+          &blacktriangledown; Download ZIP
         </button></a
       >
     </section>
@@ -60,28 +51,47 @@
 </template>
 
 <script>
-import axios from "axios";
+import DatasetForm from "./DatasetForm";
 
 export default {
   name: "ArchiveForge",
   props: {
     chan: String,
   },
+  components: {
+    DatasetForm,
+  },
   data() {
     return {
       first_name: "",
       last_name: "",
-      honestyPolicy: false,
+      author_orcid: "",
+      pub_doi: "",
+
+      dataset_items: [
+        { ix: 0, id: "", name: "" }
+      ],
+
       isDownloading: false,
-      downloadUrl: null,
-      previewUrl: null,
       isErrored: false,
-      mailTo: null,
     };
   },
   methods: {
+    addDataset: function() {
+      let next = this.dataset_items.length
+      this.dataset_items.push(
+        { ix: next, id: "", name: "" }
+      )
+    },
+    useForge: function() {
+      this.isDownloading = true;
+    },
+    cancelForge: function() {
+      this.isDownloading = false;
+    },
     getCertified: function () {
       // build download link
+      /*
       this.downloadUrl = [
         this.first_name.trim(),
         this.last_name.trim(),
@@ -107,12 +117,10 @@ export default {
           // show error message
           this.isErrored = true;
         });
+        */
     },
   },
-  mounted() {
-    this.previewUrl = this.src + "/preview.png";
-    this.mailTo = "mailto:" + this.email + "?subject=Certificate";
-  },
+  mounted() {},
 };
 </script>
 
@@ -122,7 +130,8 @@ export default {
   width: 200px;
 }
 h3 {
-  margin: 40px 0 0;
+  margin: 0px;
+  padding: 0px;
 }
 ul {
   list-style-type: none;
@@ -134,5 +143,15 @@ li {
 }
 a {
   color: #42b983;
+}
+button.fett {
+  font-weight: bold;
+  font-size: 125%;
+  text-shadow: 0 0 3px black;
+}
+.fett span {
+  text-shadow: none;
+  margin-right: 1em;
+  color: rgba(0,0,0,0.2);
 }
 </style>

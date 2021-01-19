@@ -13,7 +13,8 @@
     "buefy": "0.9.4",
     "datapackage-ui": "1.2.2",
     "vue": "^2.6.11",
-    "vue-confetti": "2.2.1"
+    "vue-confetti": "2.2.1",
+    "vue-simple-uploader": "0.7.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "4.1.1",

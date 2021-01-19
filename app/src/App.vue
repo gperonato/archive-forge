@@ -3,6 +3,8 @@
     <div class="container">
       <div class="card">
         <div class="card-content">
+          <img alt="Logo" class="logo" src="/forge.png" />
+
           <div class="content has-text-left">
             <ArchiveForge
               chan="https://github.com/gperonato/archive-forge/issues"
@@ -25,7 +27,7 @@
 
         <div class="card-image mt-5">
           <img
-            alt="Logo"
+            alt="Sketch"
             src="https://raw.githubusercontent.com/gperonato/archive-forge/main/images/chem.png"
           />
         </div>
@@ -53,5 +55,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 20px;
+}
+
+.logo {
+  height: 90px;
+  margin-top: -20px;
+  float: right;
 }
 </style>
