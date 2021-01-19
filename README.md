@@ -24,3 +24,16 @@ The template should make it obvious what is desired (having a drop area)
 
 Status: Mandatory, optional....
 
+
+# Use of archive-forge in an Anaconda environment
+
+- Install [Anaconda](http://anaconda.org)
+
+- Set up the ```archive-forge``` environment:
+ ```conda env create -f environment.yml```
+
+- Activate the ```archive-forge ``` environment:
+ ```conda activate archive-forge```
+
+- Run the data integration script:
+```python flow.py```
