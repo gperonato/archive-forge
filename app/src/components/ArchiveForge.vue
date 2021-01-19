@@ -4,13 +4,13 @@
 
     <section class="form">
       <b-field label="Author of data generation">
-        <b-input placeholder="ORCID" :v-model="author_orcid"></b-input>
-        <b-input placeholder="First name" :v-model="first_name"></b-input>
-        <b-input placeholder="Last name" :v-model="last_name"></b-input>
+        <b-input placeholder="ORCID" :value="author_orcid"></b-input>
+        <b-input placeholder="First name" :value="first_name"></b-input>
+        <b-input placeholder="Last name" :value="last_name"></b-input>
       </b-field>
 
       <b-field label="Related publication">
-        <b-input placeholder="DOI" :v-model="pub_doi"></b-input>
+        <b-input placeholder="DOI" :value="pub_doi"></b-input>
       </b-field>
     </section>
 
@@ -52,6 +52,7 @@
 
 <script>
 import DatasetForm from "./DatasetForm";
+const {Package} = require('datapackage')
 
 export default {
   name: "ArchiveForge",
@@ -67,6 +68,7 @@ export default {
       last_name: "",
       author_orcid: "",
       pub_doi: "",
+      users: "",
 
       dataset_items: [
         { ix: 0, id: "", name: "" }
@@ -77,19 +79,50 @@ export default {
     };
   },
   methods: {
-    addDataset: function() {
+    addDataset () {
       let next = this.dataset_items.length
       this.dataset_items.push(
         { ix: next, id: "", name: "" }
       )
     },
-    useForge: function() {
+    async useForge () {
       this.isDownloading = true;
+
+      // Generate a data package
+      console.log("Generating package ...")
+
+      const descriptor = {
+        resources: [
+          {
+            name: 'example',
+            profile: 'tabular-data-resource',
+            data: [
+              ['height', 'age', 'name'],
+              ['180', '18', 'Tony'],
+              ['192', '32', 'Jacob'],
+            ],
+            schema:  {
+              fields: [
+                {name: 'height', type: 'integer'},
+                {name: 'age', type: 'integer'},
+                {name: 'name', type: 'string'},
+              ],
+            }
+          }
+        ]
+      }
+
+      const dataPackage = await Package.load(descriptor)
+      const resource = dataPackage.getResource('example')
+      resource.read().then((d) => {
+        console.log(d);
+        this.pub_doi = "12345"
+      })
     },
-    cancelForge: function() {
+    cancelForge () {
       this.isDownloading = false;
     },
-    getCertified: function () {
+    getCertified () {
       // build download link
       /*
       this.downloadUrl = [

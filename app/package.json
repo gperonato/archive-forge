@@ -11,7 +11,7 @@
     "@vue/cli-plugin-babel": "4.1.1",
     "axios": "0.21.0",
     "buefy": "0.9.4",
-    "datapackage-ui": "1.2.2",
+    "datapackage": "^1.1.9",
     "vue": "^2.6.11",
     "vue-confetti": "2.2.1",
     "vue-simple-uploader": "0.7.6"
