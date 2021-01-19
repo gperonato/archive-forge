@@ -1,13 +1,6 @@
 # archive-forge
-ORD hackathon challenge 5 https://github.com/ORD-Hackathon/hackathon-2021/issues/5
 
-## Demonstation example
-
-<img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
-
-## Chemistry relevant example
-
-<img style="border:1px solid black;" src="images/chem.png" width="600" alt="Example of archive forger." />
+ORD Hackathon 2021 - [challenge #5](https://github.com/ORD-Hackathon/hackathon-2021/issues/5)
 
 # Target user
 
@@ -24,3 +17,22 @@ The template should make it obvious what is desired (having a drop area)
 
 Status: Mandatory, optional....
 
+## Demonstation example
+
+<img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
+
+## Chemistry relevant example
+
+<img style="border:1px solid black;" src="images/chem.png" width="600" alt="Example of archive forger." />
+
+# Development setup
+
+Install [RDKit](http://www.rdkit.org/docs/Install.html#fedora-centos-and-rhel) and Python > 3.6
+
+To install Python libraries, run:
+
+`pip install dataflows`
+
+# License
+
+[MIT License](LICENSE)
