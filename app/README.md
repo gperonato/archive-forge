@@ -6,7 +6,11 @@ Created with Vue.js, Buefy, Axios and CodeSandbox
 
 ## Deployment
 
-TBD
+To be checked and continued...
+ ```npm install```
+ ```npm run-script build```
+ ```npm run-script serve```
+
 
 ## License
 
