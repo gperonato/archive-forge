@@ -13,15 +13,13 @@ fields = {
 }
 
 def createPackage(csvpath, outpath, fields):
-    """Creates a datapackage from csv file and adds custom fields
+	"""Creates a datapackage from csv file and adds custom fields
 
-    Parameters:
-    csvpath (str): Path of the input csv file (coverted from sdf)
-    outpath (str): Output directory of the datapackage
-    fields (dict): custom metadata to be added to the datapackage
-
-   """
-
+	Parameters:
+	csvpath (str): Path of the input csv file (coverted from sdf)
+	outpath (str): Output directory of the datapackage
+	fields (dict): custom metadata to be added to the datapackage
+	"""
 	Flow(
 	    load(
 	        csvpath,
@@ -43,13 +41,12 @@ def createPackage(csvpath, outpath, fields):
 		print("Errors:", package.errors)
 
 def addSpectrum(spectrumpath, datapackage):
-    """Adds a resource for spectra to an existing datapackage
+	"""Adds a resource for spectra to an existing datapackage
 
-    Parameters:
-    spectrumpath (str): Path of the nmr directory
-    datapackage (str): path of the existing datapackage.json to be updated
-
-   """
+	Parameters:
+	spectrumpath (str): Path of the nmr directory
+	datapackage (str): path of the existing datapackage.json to be updated
+	"""
 	package = Package(datapackage)
 	resource = Resource()
 	resource.descriptor["path"] = "nmr/"
