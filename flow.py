@@ -1,9 +1,9 @@
 from dataflows import Flow, dump_to_path, load
+from datapackage import Package, Resource
 from rdkit import Chem
 from rdkit.Chem.ChemUtils import SDFToCSV
 import requests, io, zipfile
 import glob, os, shutil
-from datapackage import Package, Resource
 
 
 # Initialize fields
@@ -17,18 +17,36 @@ def createPackage(csvpath, outpath, fields):
 
 	Parameters:
 	csvpath (str): Path of the input csv file (coverted from sdf)
-	outpath (str): Output directory of the datapackage
+	outpath (str): Output directory of the datapackage (will be created if doesn't esit)
 	fields (dict): custom metadata to be added to the datapackage
 	"""
-	Flow(
-	    load(
-	        csvpath,
-	    ),
-	    dump_to_path(outpath),
-	).process()
 
-	#Updating datapackage
-	package = Package("{}/datapackage.json".format(outpath))
+	# Two alternative versions
+	# 1) Version with dataflows
+	# Flow(
+	#     load(
+	#         csvpath,
+	#     ),
+	#     dump_to_path(outpath),
+	# ).process()
+
+	# # Updating datapackage
+	# package = Package("{}/datapackage.json".format(outpath))
+
+	# 2) Use of datapackage-py only
+	if not os.path.exists(outpath):
+		os.mkdir(outpath)
+	csv_destination = "{}/{}".format(outpath,os.path.basename(csvpath))
+	shutil.copyfile(csvpath,csv_destination)
+	package = Package()
+	resource = Resource({"path": csv_destination})
+	resource.infer()
+	resource.descriptor["path"] = os.path.basename(csvpath)
+	resource.commit()
+	package.add_resource(resource.descriptor)
+	# End of alternative verisons
+
+	# Add custome fields to datapackage
 	if fields["author"] is not None:
 		package.descriptor['contributors'] = [{"title": fields["author"],}]
 	if fields["uid"] is not None:
@@ -45,16 +63,19 @@ def addSpectrum(spectrumpath, datapackage):
 
 	Parameters:
 	spectrumpath (str): Path of the nmr directory
-	datapackage (str): path of the existing datapackage.json to be updated
+	datapackage (str): path of the existing datapacskage.json to be updated
 	"""
 	package = Package(datapackage)
 	resource = Resource()
+	resource.descriptor["name"] = "nmr"
 	resource.descriptor["path"] = "nmr/"
 	resource.commit()
 	package.add_resource(resource.descriptor)
 	package.commit()
-	package.save(datapackage)
-	print("Errors:", package.errors)	
+	if package.valid:
+		package.save(datapackage)
+	else:
+		print("Errors:", package.errors)
 
 def SDFtoCSV(sdfpath):
 	suppl = Chem.SDMolSupplier(file)
