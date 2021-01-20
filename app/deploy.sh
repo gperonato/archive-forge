@@ -16,6 +16,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:gperonato/archive-forge.git master:gh-pages
+git push -f git@github.com:loleg/archive-forge.git master:gh-pages
 
 cd -

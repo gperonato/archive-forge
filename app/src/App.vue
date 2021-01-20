@@ -3,7 +3,7 @@
     <div class="container">
       <div class="card">
         <div class="card-content">
-          <img alt="Logo" class="logo" src="/forge.png" />
+          <img alt="Logo" class="logo" src="forge.png" />
 
           <div class="content has-text-left">
             <h2>Archive-Forge</h2>
