@@ -2,6 +2,12 @@
 
 An ORD Hackathon 2021 project based on [Challenge #5](https://github.com/ORD-Hackathon/hackathon-2021/issues/5)
 
+This is a prototype in three parts:
+
+- A set of wireframes and templates for a data publishing application, in the `images` and `templates` folders, respectively.
+- A frontend application based on this concept, that runs in the Web browser - see the `app` folder.
+- A backend script which illustrates the technology and conversion and packaging process, in the root folder.
+
 See [Development setup](#development-setup) below for deployment instructions.
 
 # Introduction
@@ -23,7 +29,7 @@ Our initial goal is to propose a web application that should make it obvious wha
 
 <img style="border:1px solid black;" src="images/chem.png" width="600" alt="Example of archive forger." />
 
-Based on these wireframes, we have prototyped a front-end application using Vue/Javascript and a back-end process using DataFlows/Python.
+Based on these wireframes, we have prototyped a front-end application using [Vue.js](https://vuejs.org/) and Javascript, and a back-end process using [DataFlows](https://github.com/datahq/dataflows/) in Python.
 
 # Development setup
 
