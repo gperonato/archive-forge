@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h2>Archive-Forge</h2>
-
     <section class="form">
       <b-field label="Author of data generation">
         <b-input placeholder="ORCID" :value="author_orcid"></b-input>

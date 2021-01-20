@@ -1,8 +1,8 @@
 # Archive-Forge
 
-An ORD Hackathon 2021 project based on [Challenge #5](https://github.com/ORD-Hackathon/hackathon-2021/issues/5)
+An ORD Hackathon 2021 project based on [Challenge #5](https://github.com/ORD-Hackathon/hackathon-2021/issues/5). This code packages data according to [Frictionless Data](https://frictionlessdata.io/specs/data-package/) specifications interactively in the web browser and in the console.
 
-This is a prototype in three parts:
+This is currently a prototype in three parts:
 
 - A set of wireframes and templates for a data publishing application, in the `images` and `templates` folders, respectively.
 - A frontend application based on this concept, that runs in the Web browser - see the `app` folder.

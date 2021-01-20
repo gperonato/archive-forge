@@ -6,6 +6,12 @@
           <img alt="Logo" class="logo" src="/forge.png" />
 
           <div class="content has-text-left">
+            <h2>Archive-Forge</h2>
+
+            <p id="overview">
+              This is a prototype app developed at the 2021 ORD Hackathon which packages data according to <a href="https://frictionlessdata.io/specs/data-package/">Frictionless Data</a> specifications interactively in the web browser. This front-end is technically inspired by and uses the same libraries as the existing <a href="https://create.frictionlessdata.io/">Create tool</a>. For more details see the <a href="https://github.com/gperonato/archive-forge">README</a>.</p>
+            </p>
+
             <ArchiveForge
               chan="https://github.com/gperonato/archive-forge/issues"
             />
@@ -20,7 +26,7 @@
           </p>
           <p class="card-footer-item">
             <a target="_blank" href="https://www.ord-hackathon.ch/">
-              ORD Hackathon 2020
+              ORD Hackathon
             </a>
           </p>
         </footer>
