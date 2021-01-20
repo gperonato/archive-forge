@@ -19,19 +19,21 @@ Example of principle users of the Archive Forge:
 - Principal investigator of a research group, who uses the tool share consistent and homogeneous data with students and faculty.
 - Scientific journal editor asking authors to submit supplementary information and complementary data.
 
-Our initial goal is to propose a web application that should make it obvious what is desired for production of a Data Package. Wireframes of the UI are below:
+Our initial goal is to propose a web application that should make it obvious what is desired for production of a Data Package.
 
-**General demo example**
+Based on wireframes that were elaborated during the hackathon, we have prototyped a front-end application using [Vue.js](https://vuejs.org/) and Javascript, and a back-end process using [DataFlows](https://github.com/datahq/dataflows/) in Python.
 
-<img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
+Wireframes of the UI are below:
 
+<img style="border:1px solid black;" src="images/chem.png" width="600" alt="Concept 1" />
 **Chemistry-relevant example**
 
-<img style="border:1px solid black;" src="images/chem.png" width="600" alt="Example of archive forger." />
-
-Based on these wireframes, we have prototyped a front-end application using [Vue.js](https://vuejs.org/) and Javascript, and a back-end process using [DataFlows](https://github.com/datahq/dataflows/) in Python.
+<img style="border:1px solid black;" src="images/demo.png" width="600" alt="Concept 2" />
+**General demo example**
 
 # Development setup
+
+Scroll down for details on running the Python-based backend.
 
 ## Frontend
 
@@ -55,19 +57,17 @@ To install Python libraries, run:
 
 Alternatively, we have set up an Anaconda environment which helps to ease cross-platform issues:
 
-- Install [Anaconda](http://anaconda.org)
+1. Install [Anaconda](http://anaconda.org)
+2. Set up the *archive-forge* environment: `conda env create -f environment.yml`
+3. Activate the environment: `conda activate archive-forge`
 
-- Set up the *archive-forge* environment:
-
-`conda env create -f environment.yml`
-
-- Activate the environment:
-
-`conda activate archive-forge`
-
-- Run the data integration script:
+Once your environment is ready, you can run the data integration script:
 
 `python flow.py`
+
+An example REST server is provided for integration with the frontend, which we leave as an exercise for the reader:
+
+`python server.py`
 
 # License
 
