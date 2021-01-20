@@ -70,7 +70,7 @@ An example REST server is provided for integration with the frontend, which we l
 `python server.py`
 
 See the input and output files after running the data-integration script here below:
-<img style="border:1px solid black;" src="images/directories.png" alt="Directories" />
+<img style="border:1px solid black;" src="images/directories.png" alt="Directories" width="300" />
 
 # License
 
