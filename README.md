@@ -1,34 +1,45 @@
-# archive-forge
+# Archive-Forge
 
-ORD Hackathon 2021 - [challenge #5](https://github.com/ORD-Hackathon/hackathon-2021/issues/5)
+An ORD Hackathon 2021 project based on [Challenge #5](https://github.com/ORD-Hackathon/hackathon-2021/issues/5)
 
-# Target user
+See [Development setup](#development-setup) below for deployment instructions.
 
-Scientific-domain specific forge
+# Introduction
 
-Important to adapt the "archive forge" to different fields/users
+This project challenge is aimed at supporting researchers from the domain of chemical science, however our prototype is designed to be useful to the wider scientific community, making it possible to create Archive Forges for different fields of endeavour and user audiences.
 
-Example of user/modifyer of archive forger:
+Example of principle users of the Archive Forge:
 
-- Principal investigator of a research group to get his studentes create consistent and homogeneous data
-- Scientific journal editor to have authors submit supplementary information with all desired information (for the specific field).
+- Principal investigator of a research group, who uses the tool share consistent and homogeneous data with students and faculty.
+- Scientific journal editor asking authors to submit supplementary information and complementary data.
 
-The template should make it obvious what is desired (having a drop area)
+Our initial goal is to propose a web application that should make it obvious what is desired for production of a Data Package. Wireframes of the UI are below:
 
-Status: Mandatory, optional....
-
-
-
-
-## Demonstation example
+**General demo example**
 
 <img style="border:1px solid black;" src="images/demo.png" width="600" alt="Example of archive forger." />
 
-## Chemistry relevant example
+**Chemistry-relevant example**
 
 <img style="border:1px solid black;" src="images/chem.png" width="600" alt="Example of archive forger." />
 
+Based on these wireframes, we have prototyped a front-end application using Vue/Javascript and a back-end process using DataFlows/Python.
+
 # Development setup
+
+## Frontend
+
+Install [Node.js](https://nodejs.org/en/) > 12 and run, in the **app** folder:
+
+`npm install`
+
+Then:
+
+`npm run serve`
+
+To start a development server.
+
+## Backend
 
 Install [RDKit](http://www.rdkit.org/docs/Install.html#fedora-centos-and-rhel) and Python > 3.6
 
@@ -36,21 +47,22 @@ To install Python libraries, run:
 
 `pip install dataflows`
 
-
-##  Use of archive-forge in an Anaconda environment
+Alternatively, we have set up an Anaconda environment which helps to ease cross-platform issues:
 
 - Install [Anaconda](http://anaconda.org)
 
-- Set up the ```archive-forge``` environment:
- ```conda env create -f environment.yml```
+- Set up the *archive-forge* environment:
 
-- Activate the ```archive-forge ``` environment:
- ```conda activate archive-forge```
+`conda env create -f environment.yml`
+
+- Activate the environment:
+
+`conda activate archive-forge`
 
 - Run the data integration script:
-```python flow.py```
+
+`python flow.py`
 
 # License
 
 [MIT License](LICENSE)
-
