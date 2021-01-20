@@ -2,7 +2,7 @@
   <div>
     <div class="columns mt-1">
       <div class="column is-one-half">
-        <b-field label="Dataset name">
+        <b-field label="Resource name">
           <b-input placeholder="code-123" :v-model="name"></b-input>
         </b-field>
       </div>

@@ -2,13 +2,21 @@
   <div>
     <section class="form">
       <b-field label="Author of data generation">
-        <b-input placeholder="ORCID" :value="author_orcid"></b-input>
         <b-input placeholder="First name" :value="first_name"></b-input>
         <b-input placeholder="Last name" :value="last_name"></b-input>
+        <span class="middletext">or</span>
+        <a href="https://info.orcid.org/documentation/features/public-api/reading-orcid-records/" target="_blank">💡</a>
+        <b-input placeholder="ORCID" :value="author_orcid"></b-input>
       </b-field>
 
-      <b-field label="Related publication">
-        <b-input placeholder="DOI" :value="pub_doi"></b-input>
+      <b-field label="Dataset name and title">
+        <b-input placeholder="my-data-package" :value="dataset_name"></b-input>
+        <b-input placeholder="My Data Package" :value="dataset_title"></b-input>
+      </b-field>
+
+      <b-field label="Publication and license">
+        <b-input placeholder="Article DOI" :value="pub_doi"></b-input>
+        <b-input placeholder="License" :value="pub_license"></b-input>
       </b-field>
     </section>
 
@@ -31,7 +39,7 @@
       <h2>&#x1F389; Woo hoo!</h2>
       <p>Your FAIR data archive is ready:</p>
       <button class="button is-default m-2" @click="cancelForge">Go back</button>
-      <a href="#" download>
+      <a :href="downloadUrl" download="datapackage.json">
         <button class="button is-success is-large">
           &blacktriangledown; Download ZIP
         </button></a
@@ -65,8 +73,12 @@ export default {
       first_name: "",
       last_name: "",
       author_orcid: "",
+      dataset_title: "",
+      dataset_name: "",
+      pub_license: "",
       pub_doi: "",
       users: "",
+      downloadUrl: "",
 
       dataset_items: [
         { ix: 0, id: "", name: "" }
@@ -89,66 +101,71 @@ export default {
       // Generate a data package
       console.log("Generating package ...")
 
-      const descriptor = {
-        resources: [
+      let descriptor = {
+        name: this.dataset_name,
+        title: this.dataset_title,
+        description: "Generated with Archive Forge",
+        licenses: [
           {
-            name: 'example',
+            "title": this.pub_license,
+            "path": "http://opendefinition.org/licenses/"
+          }
+        ],
+        "sources": [
+          {
+            "title": "Publication",
+            "path": "https://doi.org/" + this.pub_doi,
+          }
+        ],
+        profile: "tabular-data-package",
+        resources: []
+      }
+
+      this.dataset_items.forEach(function(ds) {
+        descriptor.resources.push(
+          {
+            name: ds.id,
+            title: ds.name,
             profile: 'tabular-data-resource',
             data: [
-              ['height', 'age', 'name'],
-              ['180', '18', 'Tony'],
-              ['192', '32', 'Jacob'],
+              ['SMILES','NMREDATA_VERSION','NMREDATA_LEVEL'],
+              ['69.5534', '3', '11008.6355'],
+              ['72.6738', '1', '10482.8115'],
+              ['92.0096', '4', '10125.3933'],
             ],
             schema:  {
               fields: [
-                {name: 'height', type: 'integer'},
-                {name: 'age', type: 'integer'},
-                {name: 'name', type: 'string'},
-              ],
+                {
+                  "format": "default",
+                  "name": "SMILES",
+                  "type": "string"
+                },
+                {
+                  "format": "default",
+                  "name": "NMREDATA_VERSION",
+                  "type": "string"
+                },
+                {
+                  "format": "default",
+                  "name": "NMREDATA_LEVEL",
+                  "type": "string"
+                }
+              ]
             }
           }
-        ]
-      }
+        )
+      })
+      console.log(descriptor)
+      this.downloadUrl = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(descriptor));
 
       const dataPackage = await Package.load(descriptor)
       const resource = dataPackage.getResource('example')
       resource.read().then((d) => {
-        console.log(d);
-        this.pub_doi = "12345"
+        this.downloadUrl = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(d));
       })
     },
     cancelForge () {
       this.isDownloading = false;
-    },
-    getCertified () {
-      // build download link
-      /*
-      this.downloadUrl = [
-        this.first_name.trim(),
-        this.last_name.trim(),
-        ".pdf",
-      ].join("");
-      this.downloadUrl = [this.src, this.downloadUrl].join("/");
-      // check if the link resolves
-      this.isErrored = false;
-      let confetti = this.$confetti;
-      axios
-        .get(this.downloadUrl)
-        .then(() => {
-          // replace form with confirmation
-          this.isDownloading = true;
-          confetti.start({
-            particlesPerFrame: 0.5,
-          });
-          setTimeout(function () {
-            confetti.stop();
-          }, 5000);
-        })
-        .catch(() => {
-          // show error message
-          this.isErrored = true;
-        });
-        */
     },
   },
   mounted() {},
@@ -184,5 +201,8 @@ button.fett {
   text-shadow: none;
   margin-right: 1em;
   color: rgba(0,0,0,0.2);
+}
+.middletext {
+  margin: 0.5em;
 }
 </style>

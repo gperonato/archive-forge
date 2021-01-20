@@ -9,7 +9,7 @@
             <h2>Archive-Forge</h2>
 
             <p id="overview">
-              This is a prototype app developed at the 2021 ORD Hackathon which packages data according to <a href="https://frictionlessdata.io/specs/data-package/">Frictionless Data</a> specifications interactively in the web browser. This front-end is technically inspired by and uses the same libraries as the existing <a href="https://create.frictionlessdata.io/">Create tool</a>. For more details see the <a href="https://github.com/gperonato/archive-forge">README</a>.</p>
+              This is a prototype app developed at an <a href="https://www.ord-hackathon.ch/">Open Research Data Hackathon</a> which packages data according to <a href="https://frictionlessdata.io/specs/data-package/">Frictionless Data</a> specifications interactively in the web browser. This front-end is technically inspired by and uses the same libraries as the existing <a href="https://create.frictionlessdata.io/">Create tool</a>. For more details see the <a href="https://github.com/gperonato/archive-forge">README</a>.
             </p>
 
             <ArchiveForge
@@ -29,14 +29,12 @@
               ORD Hackathon
             </a>
           </p>
+          <p class="card-footer-item">
+            <a target="_blank" style="font-weight:bold" href="https://github.com/gperonato/archive-forge">
+              Source code
+            </a>
+          </p>
         </footer>
-
-        <div class="card-image mt-5">
-          <img
-            alt="Sketch"
-            src="https://raw.githubusercontent.com/gperonato/archive-forge/main/images/chem.png"
-          />
-        </div>
       </div>
     </div>
   </div>
